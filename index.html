@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Handout - A4 Print</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap');
+
+        /* A4 Specific Settings */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #e2e8f0; /* Grey background for screen viewing */
+            -webkit-print-color-adjust: exact;
+        }
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin: 20px auto;
+            padding: 15mm; /* Standard print margins */
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Print Overrides to ensure it looks perfect on paper */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+            }
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+            /* Ensure colors print correctly */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Print Button (Visible on screen only) -->
+    <div class="fixed bottom-6 right-6 no-print z-50">
+        <button onclick="window.print()" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-full shadow-xl transition flex items-center gap-2 border-2 border-white">
+            <i class="fas fa-print"></i> Print A4 Handout
+        </button>
+    </div>
+
+    <!-- A4 Container -->
+    <div class="a4-page flex flex-col justify-between">
+        
+        <!-- 1. Header Section -->
+        <header class="border-b-4 border-slate-800 pb-4 mb-6 flex justify-between items-end">
+            <div>
+                <p class="text-xs font-bold tracking-widest uppercase text-slate-500 mb-1">Presentation Techniques Course</p>
+                <h1 class="text-3xl font-bold text-slate-900 leading-tight">The Science of Deception</h1>
+                <p class="text-lg italic text-slate-600">Sensation vs. Perception</p>
+            </div>
+            <div class="text-right">
+                <div class="text-sm font-bold text-slate-900">Ahmed Jedidi</div>
+                <div class="text-xs text-slate-500">21/11/2025</div>
+            </div>
+        </header>
+
+        <!-- 2. Core Theory Block -->
+        <section class="bg-slate-50 rounded-lg p-4 border border-slate-200 mb-6">
+            <h2 class="text-sm font-bold uppercase text-indigo-600 mb-2">The Core Concept</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-slate-900">Sensation (Input)</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-1">
+                        The raw physical energy (light waves) received by the eye. This is purely biological data collection.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900">Perception (Output)</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-1">
+                        The brain's interpretation of that data. The brain uses <em>context</em>, <em>memory</em>, and <em>evolutionary shortcuts</em> to construct reality.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Illusions Grid (3 Columns) -->
+        <div class="grid grid-cols-3 gap-6 mb-6 flex-grow">
+            
+            <!-- Column 1: Checker Shadow (SPOILER FREE - UNSOLVED) -->
+            <div class="flex flex-col">
+                <div class="h-32 bg-slate-100 rounded border border-slate-200 flex items-center justify-center mb-3 overflow-hidden relative">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <rect x="0" y="0" width="50" height="100" fill="#333" />
+                        <rect x="50" y="0" width="50" height="100" fill="#e5e5e5" />
+                        <!-- Squares -->
+                        <rect x="15" y="35" width="20" height="20" fill="#777" />
+                        <text x="25" y="49" font-size="10" fill="white" text-anchor="middle">A</text>
+                        <rect x="65" y="35" width="20" height="20" fill="#777" />
+                        <text x="75" y="49" font-size="10" fill="white" text-anchor="middle">B</text>
+                        
+                        <!-- Fold Guides (Instead of the answer) -->
+                        <line x1="0" y1="45" x2="10" y2="45" stroke="#aaa" stroke-width="1" stroke-dasharray="2"/>
+                        <line x1="90" y1="45" x2="100" y2="45" stroke="#aaa" stroke-width="1" stroke-dasharray="2"/>
+                        <text x="50" y="90" font-size="6" fill="#555" text-anchor="middle" font-style="italic">Fold page to connect A & B</text>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-slate-900 text-sm mb-1">1. Checker Shadow</h3>
+                <p class="text-[10px] font-semibold text-indigo-700 mb-1">Illusion of Contrast</p>
+                <p class="text-[10px] text-slate-600 leading-snug">
+                    <strong>The Phenomenon:</strong> Square A and B are physically identical.
+                    <br><br>
+                    <strong>The Science:</strong> <em>Lateral Inhibition</em>. The brain "discounts" the shadow, artificially lightening B to help you identify the object's true color.
+                </p>
+            </div>
+
+            <!-- Column 2: Rubin's Vase -->
+            <div class="flex flex-col">
+                <div class="h-32 bg-slate-900 rounded border border-slate-200 flex items-center justify-center mb-3 overflow-hidden">
+                     <img src="https://media.licdn.com/dms/image/v2/D4D12AQGBorszmG1svw/article-inline_image-shrink_400_744/article-inline_image-shrink_400_744/0/1736097213994?e=2147483647&v=beta&t=dxfPOgpS3CYXLSv1p0w-YUSRJkn1wgHMoJcgCiRWSj0" 
+                         alt="Rubin's Vase" 
+                         class="h-full object-contain">
+                </div>
+                <h3 class="font-bold text-slate-900 text-sm mb-1">2. Rubin's Vase</h3>
+                <p class="text-[10px] font-semibold text-indigo-700 mb-1">Figure-Ground Reversal</p>
+                <p class="text-[10px] text-slate-600 leading-snug">
+                    <strong>The Phenomenon:</strong> You see faces OR a vase, never both at once.
+                    <br><br>
+                    <strong>The Science:</strong> <em>Multistability</em>. The brain cannot assign border ownership to two objects simultaneously. It acts as a toggle switch.
+                </p>
+            </div>
+
+            <!-- Column 3: Müller-Lyer (SPOILER FREE - UNSOLVED) -->
+            <div class="flex flex-col">
+                <div class="h-32 bg-slate-100 rounded border border-slate-200 flex items-center justify-center mb-3 overflow-hidden">
+                     <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <line x1="20" y1="30" x2="80" y2="30" stroke="black" stroke-width="2" />
+                        <polyline points="30,20 20,30 30,40" stroke="black" fill="none" stroke-width="2"/>
+                        <polyline points="70,20 80,30 70,40" stroke="black" fill="none" stroke-width="2"/>
+                        
+                        <line x1="20" y1="70" x2="80" y2="70" stroke="black" stroke-width="2" />
+                        <polyline points="10,60 20,70 10,80" stroke="black" fill="none" stroke-width="2"/>
+                        <polyline points="90,60 80,70 90,80" stroke="black" fill="none" stroke-width="2"/>
+                        
+                        <!-- Removed Red Truth Lines -->
+                        <text x="50" y="90" font-size="6" fill="#555" text-anchor="middle" font-style="italic">Measure lines with pen</text>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-slate-900 text-sm mb-1">3. Müller-Lyer</h3>
+                <p class="text-[10px] font-semibold text-indigo-700 mb-1">Depth Perception Error</p>
+                <p class="text-[10px] text-slate-600 leading-snug">
+                    <strong>The Phenomenon:</strong> The bottom line appears longer, despite being equal.
+                    <br><br>
+                    <strong>The Science:</strong> <em>Top-Down Processing</em>. The brain interprets the angles as 3D corners (Room vs. Building) and scales the size based on perceived distance.
+                </p>
+            </div>
+        </div>
+
+        <!-- QR Code Interactive Demo Section -->
+        <div class="flex justify-center mb-6">
+            <div class="bg-white border border-indigo-200 rounded-xl p-3 pr-6 flex items-center gap-4 shadow-sm">
+                <!-- QR Code Image -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://optical-illusions-nine.vercel.app/&color=1e293b" 
+                     alt="Scan for Demo" 
+                     class="w-16 h-16 mix-blend-multiply">
+                
+                <!-- Call to Action Text -->
+                <div class="text-left">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-indigo-100 text-indigo-700 text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">Interactive</span>
+                        <i class="fas fa-mobile-alt text-indigo-400 text-xs"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800">Don't believe your eyes?</p>
+                    <p class="text-[10px] text-slate-500">Scan to try the live demo on your phone.</p>
+                    <p class="text-[8px] text-slate-400 mt-0.5 font-mono">optical-illusions-nine.vercel.app</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. The Takeaway -->
+        <div class="bg-slate-800 text-white p-4 rounded-lg text-center mb-6">
+            <p class="font-serif italic text-sm">"If your eyes can be fooled, what else can be fooled?"</p>
+            <p class="text-[10px] text-slate-400 mt-1">Bias, Logic, Memory, and Judgment.</p>
+        </div>
+
+        <!-- 5. References & Contact (Plagiarism Protection) -->
+        <footer class="border-t border-slate-300 pt-4">
+            <div class="grid grid-cols-2 gap-8">
+                <!-- References -->
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase text-slate-500 mb-2">References & Citations</h4>
+                    <ul class="text-[9px] text-slate-500 space-y-1 list-disc list-inside">
+                        <li>Adelson, E. H. (1995). <em>Checkershadow Illusion</em>. Perceptual Science Group, MIT.</li>
+                        <li>Rubin, E. (1915). <em>Synsoplevede Figurer</em>. Gyldendalske Boghandel.</li>
+                        <li>Gregory, R. L. (1966). <em>Eye and Brain: The Psychology of Seeing</em>. McGraw-Hill.</li>
+                        <li>Eagleman, D. (2015). <em>The Brain: The Story of You</em>. Pantheon.</li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase text-slate-500 mb-2">Contact Information</h4>
+                    <div class="text-[10px] text-slate-700 space-y-1">
+                        <p><strong>Student Name:</strong> Ahmed Jedidi </p>
+                        <p><strong>Email:</strong> jeah1011@h-ka.de</p>
+                        <p><strong>Website:</strong> https://optical-illusions-nine.vercel.app/ </p>
+                        <p class="mt-2 text-[8px] text-slate-400 italic">
+                            *Images generated for educational demonstration or sourced from public domain archives (Rubin, 1915).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eco-Friendly / Recycling Footer -->
+            <div class="mt-4 pt-2 border-t border-dashed border-slate-300 flex items-center justify-center gap-2 opacity-70">
+                <i class="fas fa-recycle text-green-600 text-sm"></i>
+                <span class="text-[8px] uppercase font-bold text-slate-600 tracking-wider">Eco-Friendly Reminder:</span>
+                <span class="text-[8px] text-slate-500 italic">Please recycle this handout after the presentation or keep it for study purposes.</span>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
